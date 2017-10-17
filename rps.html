@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+<div id="game">
+	<p> Press r, p, or s to start playing</p>
+</div>
+<!-- 	I need the user to make a choice
+	Computer to make a choice
+	Compare these choices
+	Compare these choices, and dertermine a win, loss, or tie
+	Display the result to the user
+ -->
+
+<script type="text/javascript">
+
+	var options = ["r", "p", "s"];
+	var wins = 0;
+	var losses = 0;
+	var ties = 0;
+
+	document.onkeyup = function() {
+		var userguess = String.fromCharCode(event.keyCode).
+			toLowerCase();
+
+		var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+
+		if (userguess== 'r' || userguess== 'p' || userguess== 's') {
+			
+
+			if ((userguess == 'r') && (computerGuess=='s')) {
+				wins++;
+			}
+			if ((userguess == 's') && (computerGuess=='p')) {
+				wins++;
+			}
+			if ((userguess == 'p') && (computerGuess=='r')) {
+				wins++;
+			}
+			if ((userguess == 'r') && (computerGuess=='p')) {
+				losses++;
+			}
+			if ((userguess == 's') && (computerGuess=='r')) {
+				losses++;
+			}
+			if ((userguess == 'p') && (computerGuess=='s')) {
+				losses++;
+			}
+ 			if (userguess==computerGuess){
+				ties++;
+			}
+		} else {
+			alert("Please choose r, p, or s");
+		}
+
+		var html = "<p>Press r, p, or s to start playing</p>" +
+		"<p>WINS: " + wins + "</p>" +
+		"<p>LOSSES: " + losses + "</p>" +
+		"<p>TIES: " + ties + "</p>";
+
+		document.querySelector('#game').innerHTML = html;
+
+	}
+
+</script>
+</body>
+</html>
